@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Use — Subitem Bulk Date Shift</title>
+<meta name="robots" content="index,follow">
+<style>
+:root{--ink:#1a1a1a;--dim:#666;--line:#e5e5e5;--accent:#0073ea;--bg:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:48px 24px 96px}
+header.top{border-bottom:1px solid var(--line);margin-bottom:40px;padding-bottom:20px}
+header.top a.back{color:var(--accent);text-decoration:none;font-size:14px}
+h1{font-size:2rem;line-height:1.2;margin:.2em 0 .1em}
+h2{font-size:1.35rem;margin:2em 0 .4em;padding-top:.4em}
+h3{font-size:1.1rem;margin:1.6em 0 .3em}
+p,li{color:#2a2a2a}
+a{color:var(--accent)}
+code{background:#f4f5f7;padding:.12em .35em;border-radius:4px;font-size:.9em}
+table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:.95em}
+th,td{border:1px solid var(--line);padding:.5em .7em;text-align:left;vertical-align:top}
+th{background:#f7f8fa}
+em{color:var(--dim)}
+blockquote{border-left:3px solid var(--line);margin:1.2em 0;padding:.2em 1em;color:var(--dim)}
+hr{border:0;border-top:1px solid var(--line);margin:2em 0}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+ul.cards{list-style:none;padding:0}
+ul.cards li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:10px 0}
+ul.cards a{font-weight:600;text-decoration:none;font-size:1.05rem}
+ul.cards p{margin:.3em 0 0;color:var(--dim);font-size:.92em}
+</style>
+</head><body><div class="wrap">
+<header class="top"><a class="back" href="/subitem-bulk-date-shift/">← Subitem Bulk Date Shift</a></header>
+<main><h1 id="subitem-bulk-date-shift-how-to-guide-demo-script-gallery-copy">Subitem Bulk Date Shift — How-to Guide, Demo Script &amp; Gallery Copy</h1>
+<hr />
+<h2 id="1-how-to-use">1. How to Use</h2>
+<p>Shifting subitem dates one at a time is the kind of chore that eats an afternoon. Subitem Bulk Date Shift lets you move all the dates under a set of items by a single offset — plus two weeks, minus three business days, whatever the reschedule calls for — after showing you exactly what will change. Nothing is written until you say go, and anything you apply can be undone.</p>
+<h3 id="install-it">Install it</h3>
+<ol>
+<li>Open the monday.com marketplace and search for <strong>Subitem Bulk Date Shift</strong>.</li>
+<li>Click <strong>Install</strong> and pick the account you want it on.</li>
+<li>Approve the permissions on the OAuth screen. That's the whole setup — no API keys, no config file, no extra login.</li>
+</ol>
+<p>The app asks only for what it needs to read your boards and write the dates you confirm. It never touches anything else.</p>
+<h3 id="your-first-shift">Your first shift</h3>
+<ol>
+<li>Open a board that has items with subitems, and date columns on those subitems.</li>
+<li>Tick the checkbox on each parent item you want to move. Select as many as you like.</li>
+<li>Open the item <strong>batch-action menu</strong> (the toolbar that appears once items are selected) and choose <strong>Bulk Shift Subitem Dates</strong>.</li>
+<li>In the panel that opens, pick the <strong>date column</strong> to shift.</li>
+<li>Set your <strong>offset</strong> — a number and a unit, like <code>+2 weeks</code> or <code>-3 days</code>.</li>
+<li>If you only want to count working days, flip on <strong>Business days only (Mon–Fri)</strong>. A weekend-landing date rolls forward to the next Monday instead. You can pick a region so public holidays get skipped too.</li>
+<li>Look at the <strong>preview table</strong>. This is a dry run: every affected subitem, its current date, and the new date sit side by side. Nothing has changed on the board yet.</li>
+<li>When the preview looks right, click <strong>Apply</strong>.</li>
+</ol>
+<p>An <strong>undo toast</strong> shows up for <strong>60 seconds</strong> the moment the change lands. One click and it's all reverted. Miss the window? The change stays in your <strong>history for 24 hours</strong> — open the audit log and restore it from there.</p>
+<h3 id="saving-offsets-as-presets">Saving offsets as presets</h3>
+<p>If you run the same shift often — "push everything a sprint" is a common one — save it once and reuse it.</p>
+<ol>
+<li>Open <strong>Settings → Presets</strong>.</li>
+<li>Name an offset and save it (for example, <em>Sprint push = +2 weeks, business days on</em>).</li>
+<li>Next time, pick the preset instead of retyping the offset.</li>
+<li>Admins can <strong>share</strong> a preset with the whole team so everyone shifts by the same rules.</li>
+</ol>
+<h3 id="cascade-rules-keep-dependent-dates-in-line">Cascade rules — keep dependent dates in line</h3>
+<p>Cascade rules shift downstream dates automatically when an upstream one moves, so a slipped start doesn't leave the rest of the schedule stranded.</p>
+<ol>
+<li>Go to <strong>Settings → Cascade rules</strong>.</li>
+<li>Define which column drives which, and by how much.</li>
+<li>From then on, a qualifying change fires the cascade on its own. Locks and holidays are respected.</li>
+</ol>
+<h3 id="scheduling-a-shift-for-later">Scheduling a shift for later</h3>
+<p>Need a shift to run overnight, or at the start of next week?</p>
+<ol>
+<li>Open <strong>Settings → Scheduled shifts</strong>.</li>
+<li>Set the offset and the date/time to run it.</li>
+<li>The app applies it for you when the time comes and writes it to the audit log like any other shift.</li>
+</ol>
+<h3 id="undo-history-and-the-audit-log">Undo, history and the audit log</h3>
+<ul>
+<li><strong>Undo toast</strong> — 60 seconds, one click, right after Apply.</li>
+<li><strong>History restore</strong> — 24 hours to roll back a change from the <strong>Audit log</strong> tab.</li>
+<li><strong>Audit log</strong> — every shift, who ran it, the offset, the subitem count. Your paper trail.</li>
+</ul>
+<h3 id="plans">Plans</h3>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Shifts per day</th>
+<th>Subitems per operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free</td>
+<td>1</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td>Unlimited</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Enterprise</td>
+<td>Unlimited</td>
+<td>Unlimited</td>
+</tr>
+</tbody>
+</table>
+<p>Check <strong>Settings → Plan &amp; usage</strong> to see where you stand and to upgrade. The core flow — select, preview, apply, undo — is the same on every plan.</p>
+<hr />
+<h2 id="2-demo-video-script-2-minutes">2. Demo Video Script (≤ 2 minutes)</h2>
+<p><strong>Format:</strong> screen recording, single voice-over. Timings are cumulative; total spoken narration runs under two minutes.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>On screen</th>
+<th>Narration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00–0:12</td>
+<td>Marketplace listing → click Install → OAuth approval screen → app lands on a board.</td>
+<td>"Installing Subitem Bulk Date Shift takes one click from the marketplace and an OAuth approval. No keys, no setup."</td>
+</tr>
+<tr>
+<td>0:12–0:30</td>
+<td>Board with items and subitems. Cursor ticks three parent items. Batch-action toolbar appears; open it and hover <strong>Bulk Shift Subitem Dates</strong>.</td>
+<td>"Say a few tasks slipped. Select the parent items, open the batch-action menu, and choose Bulk Shift Subitem Dates."</td>
+</tr>
+<tr>
+<td>0:30–0:52</td>
+<td>Panel opens. Pick the date column. Type offset <code>+2 weeks</code>. Flip on <strong>Business days only</strong>.</td>
+<td>"Pick the date column, set your offset — here, plus two weeks — and turn on business-days mode so nothing lands on a weekend."</td>
+</tr>
+<tr>
+<td>0:52–1:15</td>
+<td>Preview table fills in: current date and new date side by side for each subitem. Cursor traces a couple of rows.</td>
+<td>"Before anything changes, you get a full preview. Every subitem, its old date and its new one. This is a dry run — the board hasn't moved yet."</td>
+</tr>
+<tr>
+<td>1:15–1:32</td>
+<td>Click <strong>Apply</strong>. Dates update on the board. <strong>Undo toast</strong> slides in with its countdown.</td>
+<td>"Looks right — Apply. The dates update, and you get a sixty-second undo if you change your mind. History keeps it for a full day after that."</td>
+</tr>
+<tr>
+<td>1:32–1:55</td>
+<td>Open <strong>Settings</strong>. Quick pan across <strong>Presets</strong>, then <strong>Audit log</strong> showing the shift just applied.</td>
+<td>"Save an offset as a preset to reuse across the team, set up cascade rules and scheduled shifts, and every change lands in the audit log. Subitem Bulk Date Shift — reschedule in seconds, not clicks."</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-gallery-image-captions">3. Gallery Image Captions</h2>
+<ol>
+<li><strong>Batch-action entry</strong> — Select your items and start a bulk shift straight from the board toolbar.</li>
+<li><strong>Offset picker</strong> — Set one offset for every subitem, with a business-days toggle for weekend-safe dates.</li>
+<li><strong>Dry-run preview</strong> — See exactly what will change, old date beside new, before anything is written.</li>
+<li><strong>Undo toast</strong> — Changed your mind? One click reverses the whole shift within sixty seconds.</li>
+<li><strong>Settings / Presets</strong> — Save, reuse and share offsets, plus cascade rules, scheduling and a full audit log.</li>
+</ol>
+<hr />
+<h2 id="4-app-card-copy">4. App Card Copy</h2>
+<p>Reschedule every subitem date under your selected items in one shift — preview it first, undo it in a click.</p>
+<hr />
+<blockquote>
+<p><strong>Note:</strong> the <code>humanizer</code> skill named in the source prompt is not installed in this environment, so it could not be invoked. All prose above was written for a natural, human read directly.</p>
+</blockquote></main>
+<footer>&copy; Subitem Bulk Date Shift &middot; hosted at monday.rnui.dev &middot; contact: mrpmohiburrahman@gmail.com</footer>
+</div></body></html>
