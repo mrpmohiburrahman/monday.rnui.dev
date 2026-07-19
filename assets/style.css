@@ -1,0 +1,211 @@
+/* monday.rnui.dev — Subitem Bulk Date Shift · docs & legal
+   Design thesis: "the shift" — a date moved by an offset along a timeline.
+   Display: Space Grotesk · Body: IBM Plex Sans · Data/dates: IBM Plex Mono */
+
+:root{
+  --ink:#0b1f3a;
+  --ink-2:#3d4d68;
+  --ink-3:#7280a0;
+  --paper:#eef2f9;
+  --surface:#ffffff;
+  --line:#d9e1ee;
+  --brand:#0073ea;
+  --brand-deep:#0257b3;
+  --brand-wash:#e6f0fd;
+  --applied:#009f6f;          /* "after / applied" — the one counterpoint accent */
+  --applied-wash:#e0f5ec;
+  --radius:16px;
+  --measure:66ch;
+  --maxw:1120px;
+  --pad:clamp(22px,5vw,44px);
+  --font-display:"Space Grotesk",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SF Mono",monospace;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background:var(--paper);
+  font-family:var(--font-body);font-size:clamp(15px,.55vw + 13.5px,17px);line-height:1.68;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+/* planner dot-grid — a calendar page, faded to nothing */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(var(--line) 1.1px,transparent 1.6px);
+  background-size:27px 27px;opacity:.55;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 62%);
+          mask-image:linear-gradient(180deg,#000,transparent 62%);
+}
+
+a{color:var(--brand);text-decoration:none}
+a:hover{color:var(--brand-deep);text-decoration:underline;text-underline-offset:3px}
+::selection{background:var(--brand);color:#fff}
+:focus-visible{outline:2.5px solid var(--brand);outline-offset:3px;border-radius:4px}
+
+/* ---- masthead ---- */
+.masthead{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px var(--pad);
+  background:color-mix(in srgb,var(--paper) 82%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.wordmark{
+  display:inline-flex;align-items:center;gap:22px;
+  font-family:var(--font-mono);font-size:.78rem;font-weight:600;letter-spacing:.02em;
+  color:var(--ink);
+}
+.wordmark:hover{text-decoration:none;color:var(--ink)}
+.wordmark .dot{width:8px;height:8px;border-radius:50%;
+  background:var(--brand);box-shadow:12px 0 0 0 var(--applied)}
+.masthead nav{display:flex;gap:18px;font-family:var(--font-mono);font-size:.76rem;font-weight:500}
+.masthead nav a{color:var(--ink-2)}
+.backlink{font-family:var(--font-mono);font-size:.76rem;font-weight:500;color:var(--ink-2)}
+.backlink:hover{color:var(--brand)}
+
+/* ---- shell ---- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.prose{max-width:var(--measure);margin:0 auto;padding:clamp(30px,6vw,64px) 0 40px}
+footer.site{
+  max-width:var(--maxw);margin:0 auto;padding:34px var(--pad) 60px;
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;
+  font-family:var(--font-mono);font-size:.74rem;color:var(--ink-3)}
+footer.site b{color:var(--ink-2);font-weight:600}
+footer.site a{color:var(--ink-2)}
+
+/* ---- shared type ---- */
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--brand);margin:0 0 18px}
+h1,h2,h3{font-family:var(--font-display);color:var(--ink);
+  letter-spacing:-.02em;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(2rem,4.4vw,3rem);font-weight:600;margin:.1em 0 .5em}
+h2{font-size:clamp(1.28rem,2.4vw,1.65rem);font-weight:600;margin:2.4em 0 .5em}
+h3{font-size:1.12rem;font-weight:600;margin:1.9em 0 .4em;letter-spacing:-.01em}
+p{margin:0 0 1.15em}
+strong{font-weight:600;color:var(--ink)}
+em{color:var(--ink-2)}
+hr{border:0;height:1px;background:var(--line);margin:2.6em 0}
+
+.prose ul,.prose ol{margin:0 0 1.3em;padding-left:1.35em}
+.prose li{margin:.4em 0;padding-left:.15em}
+.prose li::marker{color:var(--brand)}
+.prose ol li::marker{font-family:var(--font-mono);font-size:.82em;color:var(--ink-3)}
+
+code{font-family:var(--font-mono);font-size:.86em;font-weight:500;
+  background:var(--surface);border:1px solid var(--line);
+  padding:.1em .42em;border-radius:6px;color:var(--brand-deep);white-space:nowrap}
+
+blockquote{margin:1.8em 0;padding:18px 22px;background:var(--surface);
+  border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:0 12px 12px 0}
+blockquote p:last-child{margin:0}
+
+/* dates & data tables — mono, tabular */
+table{border-collapse:separate;border-spacing:0;width:100%;margin:1.6em 0;
+  font-size:.93rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden}
+th,td{padding:.72em .9em;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+thead th{font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
+  background:color-mix(in srgb,var(--paper) 60%,var(--surface))}
+tbody tr:hover{background:color-mix(in srgb,var(--brand-wash) 40%,var(--surface))}
+/* first column of the plans/scope tables reads as a label */
+tbody td:first-child{font-weight:600}
+
+/* effective-date / meta line under an h1 */
+.meta{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-3);
+  margin:-.2em 0 2em;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.meta .chip{color:var(--ink-2);background:var(--surface);border:1px solid var(--line);
+  padding:.2em .6em;border-radius:999px}
+
+/* =========================================================
+   LANDING — hero + the shift signature + doc index
+   ========================================================= */
+.hero{padding:clamp(44px,9vw,96px) 0 clamp(30px,6vw,54px);max-width:none}
+.hero-title{font-size:clamp(2.3rem,6.2vw,4.1rem);font-weight:600;
+  margin:0 0 .5em;max-width:14ch}
+.hero-sub{font-size:clamp(1.02rem,1.5vw,1.22rem);color:var(--ink-2);
+  max-width:52ch;margin:0}
+
+/* the signature: a due date shifted along a timeline */
+.shift{
+  --nodew:clamp(84px,20vw,150px);
+  display:flex;align-items:flex-start;gap:clamp(10px,2.5vw,26px);
+  margin:clamp(30px,5vw,48px) 0 clamp(34px,6vw,56px);
+  max-width:560px}
+.shift-node{width:var(--nodew);flex:0 0 auto;text-align:center}
+.shift-date{display:block;font-family:var(--font-mono);font-weight:600;
+  font-size:clamp(1.3rem,4.2vw,2.1rem);letter-spacing:-.02em;color:var(--ink)}
+.shift-node.is-before .shift-date{color:var(--ink-3)}
+.shift-node.is-after .shift-date{color:var(--applied);
+  text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.shift-tag{display:block;margin-top:8px;font-family:var(--font-mono);
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.shift-track{position:relative;flex:1 1 auto;height:calc(clamp(1.3rem,4.2vw,2.1rem) + 2px);
+  display:flex;align-items:center}
+.shift-track::before{content:"";position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--ink-3),var(--brand));
+  transform:scaleX(1);transform-origin:left;border-radius:2px}
+.shift-track::after{content:"";position:absolute;right:0;top:50%;
+  width:9px;height:9px;margin-top:-4.5px;border-radius:50%;background:var(--brand)}
+.shift-delta{position:relative;margin:0 auto;
+  font-family:var(--font-mono);font-size:clamp(.76rem,1.4vw,.9rem);font-weight:600;
+  color:#fff;background:var(--brand);
+  padding:.34em .74em;border-radius:999px;white-space:nowrap;
+  box-shadow:0 6px 16px -6px color-mix(in srgb,var(--brand) 70%,transparent)}
+
+/* doc index — typographic rows, differentiated by type tag (no fake numbering) */
+.docindex{border-top:1px solid var(--line);margin:0;max-width:760px}
+.doc{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px 20px;
+  padding:22px 4px;border-bottom:1px solid var(--line);color:inherit}
+.doc:hover{text-decoration:none}
+.doc-main{min-width:0}
+.doc-title{display:block;font-family:var(--font-display);font-weight:600;font-size:1.32rem;
+  letter-spacing:-.01em;color:var(--ink);transition:transform .18s ease}
+.doc-desc{display:block}
+.doc:hover .doc-title{transform:translateX(6px);color:var(--brand-deep)}
+.doc-desc{color:var(--ink-2);font-size:.96rem;margin-top:2px}
+.doc-side{display:flex;align-items:center;gap:14px;
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.doc-arrow{font-size:1.3rem;color:var(--brand);transition:transform .18s ease}
+.doc:hover .doc-arrow{transform:translateX(5px)}
+
+/* small feature strip on landing */
+.facts{display:flex;flex-wrap:wrap;gap:10px 12px;margin:8px 0 4px;max-width:760px}
+.fact{font-family:var(--font-mono);font-size:.76rem;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:.4em .85em}
+.fact b{color:var(--brand-deep)}
+
+/* =========================================================
+   motion — one orchestrated load; reduced-motion respected
+   ========================================================= */
+@media (prefers-reduced-motion:no-preference){
+  .anim .shift-track::before{transform:scaleX(0);animation:draw .6s .25s ease-out forwards}
+  .anim .shift-track::after{opacity:0;animation:pop .3s .8s ease-out forwards}
+  .anim .shift-delta{opacity:0;transform:translateX(-30px);animation:slide .45s .5s ease-out forwards}
+  .anim .shift-node.is-after{opacity:0;transform:translateX(14px);animation:slide .5s .75s ease-out forwards}
+  .anim .hero-title,.anim .eyebrow,.anim .hero-sub{opacity:0;animation:rise .6s ease-out forwards}
+  .anim .eyebrow{animation-delay:.02s}
+  .anim .hero-title{animation-delay:.08s}
+  .anim .hero-sub{animation-delay:.16s}
+}
+@keyframes draw{to{transform:scaleX(1)}}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes slide{to{opacity:1;transform:translateX(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---- responsive ---- */
+@media (max-width:560px){
+  .shift{--nodew:74px}
+  .doc{grid-template-columns:1fr;gap:6px}
+  .doc-side{justify-content:flex-start}
+  .masthead nav{gap:12px}
+}
